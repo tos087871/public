@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         YouTube Fullscreen 
 // @namespace    http://tampermonkey.net/
-// @version      0.1.10
+// @version      0.1.11
 // @description  try to take over the world!
 // @author       You
 // @match        https://m.youtube.com/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @grant        none
+// @updateURL    https://github.com/tos087871/public/raw/main/yt.user.js
 // ==/UserScript==
 
 (function() {
