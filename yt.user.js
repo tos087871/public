@@ -33,7 +33,7 @@
         /*  }*/
         </style>
         <div id="mysr" style="font-size: 24pt; position: fixed !important; top: 0px;left: 180px; z-index: 2147483647 !important;">
-        <div id="fullscreen">全画面</div>
+          <div id="fullscreen">全画面</div>
         </div>
       `);
 
