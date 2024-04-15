@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         New Userscript
 // @namespace    http://tampermonkey.net/
-// @version      0.1.4
+// @version      0.1.7
 // @description  try to take over the world!
 // @author       You
 // @match        https://www.showroom-live.com/*
@@ -20,14 +20,28 @@
   window.addEventListener("load", () => {
     document.querySelector('body').insertAdjacentHTML('beforeend',
       `
-        <style id="sr−anim">
-          
+        <style id="sr−util">
+          #sr-util-item-list {
+            font-size: 50pt;
+          }
+          .menu-checkbox {
+            
+          }
+          .animation-container {
+            display: none !important;
+          }
+          .room-telop {
+            display: none;
+          }
         </style>
-        <div id="mysr" style="font-size: 50pt; position: relative; top: 200 px;">...</div>
-        <div id="fullscreen">全画面</div>
+        <div id="sr-util-menu-button" style="font-size: 80pt; position: relative; top: 200 px;">...</div>
+        <ul id="sr-util-item-list">
+          <li id="fullscreen">全画面</li>
+          <li id="telop">テロップを消す<input class="menu-checkbox" type="checkbox"></li>
+        </ul>
       `);
 
-    new MutationObserver(mutationInfoList => {
+    /*new MutationObserver(mutationInfoList => {
       for (let mutationInfo of mutationInfoList) {
         for (const node of mutationInfo.addedNodes) {
           if (node.attributes.getNamedItem('id').value === 'sr-anim') {
@@ -43,17 +57,20 @@
     }).observe(document.body, {
       childList:true,
       subtree: true,
-    });
+    });*/
     //document.querySelector('#sr-anim').setAttribute('style', 'display: none;');
 
-//document.querySelector(videoSelectorText). attributes.controls = 'true';
-document.querySelector(videoSelectorText).setAttribute('controls', true);
+    //document.querySelector(videoSelectorText). attributes.controls = 'true';
+    //document.querySelector(videoSelectorText).setAttribute('controls', true);
     document.querySelector('#fullscreen').onclick = () => {
+      document.querySelector('#sr-util').remove();
       //*  
       const video = document.querySelector(videoSelectorText);
-      video.requestFullscreen();
+      video.requestFullscreen({navigationUI:'show'});
       //video.exitFullscreen();
       // */
+      document.querySelector(videoSelectorText).setAttribute('controls', true);
+      //document.querySelector('#sr-util').remove();
     };
 
     console.log('sr completed');
@@ -61,11 +78,11 @@ document.querySelector(videoSelectorText).setAttribute('controls', true);
 })();
 class Util {
   constructor() {
-    
+
   }
   enableVideoControl(videoSelectorText) {
     if (!videoSelectorText) {
-      videoSelectorText='video';
+      videoSelectorText = 'video';
     }
     document.querySelector(videoSelectorText).setAttribute('controls', true);
   }

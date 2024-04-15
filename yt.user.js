@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube Fullscreen 
 // @namespace    http://tampermonkey.net/
-// @version      0.1.12
+// @version      0.1.14
 // @description  try to take over the world!
 // @author       You
 // @match        https://m.youtube.com/*
@@ -22,11 +22,17 @@
     document.querySelector('body').insertAdjacentHTML('beforeend',
       `
         <style id="sr−anim">
+          /*@media screen and (max-height: 550px) {*/
           video {
-            min-height: 100% !important;
+            min-height: 100vh !important;
+            //position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 2147483647 !important;
           }
+        /*  }*/
         </style>
-        <div id="mysr" style="font-size: 32pt; position: fixed !important; top: 200px; z-index: 2147483647 !important;">...
+        <div id="mysr" style="font-size: 32pt; position: fixed !important; top: 350px; z-index: 2147483647 !important;">...
         <div id="fullscreen">全画面</div>
         </div>
       `);
@@ -36,6 +42,7 @@
     document.querySelector('#fullscreen').onclick = () => {
       //*  
       const video = document.querySelector(videoSelectorText);
+      //video.attributes.style.min
       video.requestFullscreen();
       //video.exitFullscreen();
       // */
@@ -45,7 +52,7 @@
       constructor() {
 
       }
-      enableVideoControl(videoSelectorText) {
+      enableVideoControl(videoSecheckCollisionslectorText) {
         if (!videoSelectorText) {
           videoSelectorText = 'video';
         }
