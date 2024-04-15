@@ -37,8 +37,6 @@
         </div>
       `);
 
-    //document.querySelector('#sr-anim').setAttribute('style', 'display: none;');
-
     document.querySelector('#fullscreen').onclick = () => {
       //*  
       const video = document.querySelector(videoSelectorText);
