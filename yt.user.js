@@ -23,7 +23,7 @@
       `
         <style id="sr−anim">
           /*@media screen and (max-height: 550px) {*/
-          video {
+          /*video {
             min-height: 100vh !important;
             //position: fixed;
             top: 0;
@@ -32,7 +32,7 @@
           }
         /*  }*/
         </style>
-        <div id="mysr" style="font-size: 32pt; position: fixed !important; top: 350px; z-index: 2147483647 !important;">...
+        <div id="mysr" style="font-size: 32pt; position: fixed !important; top: 0px;left: 300px; z-index: 2147483647 !important;">...
         <div id="fullscreen">全画面</div>
         </div>
       `);
