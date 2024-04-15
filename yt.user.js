@@ -46,13 +46,14 @@
       video.requestFullscreen();
       //video.exitFullscreen();
       // */
+      new Util().enableVideoControl(videoSelectorText);
     };
 
     class Util {
       constructor() {
 
       }
-      enableVideoControl(videoSecheckCollisionslectorText) {
+      enableVideoControl(videoSelectorText) {
         if (!videoSelectorText) {
           videoSelectorText = 'video';
         }
