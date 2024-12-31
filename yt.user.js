@@ -19,6 +19,7 @@
   let videoSelectorText = '.html5-main-video';
 
   window.addEventListener("load", () => {
+    console.log('yt-loaded');
     document.querySelector('body').insertAdjacentHTML('beforeend',
       `
         <style id="sr−anim">
