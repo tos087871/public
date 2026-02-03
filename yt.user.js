@@ -18,9 +18,12 @@
   let video = null;
   let videoSelectorText = '.html5-main-video';
 
-  window.addEventListener("load", () => {
+  //window.addEventListener("load", () => {
+  waitForKeyElements('body', (elm)=>{
     console.log('yt-loaded');
-    document.querySelector('body').insertAdjacentHTML('beforeend',
+    /*document.querySelector('body')*/elm.insertAdjacentHTML('beforeend',
+    
+      
       `
         <style id="sr−anim">
           /*@media screen and (max-height: 550px) {*/
@@ -33,7 +36,7 @@
           }
         /*  }*/
         </style>
-        <div id="mysr" style="font-size: 24pt; position: fixed !important; top: 0px;left: 180px; z-index: 2147483647 !important;">
+        <div id="mysr" style="font-size: 20pt; position: fixed !important; top: 0px;left: 180px; z-index: 2147483647 !important;">
           <div id="fullscreen">全画面</div>
         </div>
       `);
@@ -59,9 +62,12 @@
         document.querySelector(videoSelectorText).setAttribute('controls', true);
       }
     }
-
+    const util = new Util();
     new Util().enableVideoControl(videoSelectorText);
-    console.log('sr init completed');
+    elm.addEventListener('touchstart',()=>{
+      util.enableVideoControl(videoSelectorText);
+    });
+    console.log('yt init completed');
   });
 })();
 
