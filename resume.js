@@ -36,6 +36,7 @@
         return '.html5-main-video';
       case 'www.bilibili.com':
         return '.bpx-player-video-wrap video';
+      case 'ok.ru':
       case '8tsu.net':
         return 'video';
       default:
