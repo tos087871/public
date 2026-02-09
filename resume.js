@@ -37,7 +37,7 @@
       case 'www.bilibili.com':
         return '.bpx-player-video-wrap video';
       case '8tsu.net':
-        return '';
+        return 'video';
       default:
         return '';
     }
