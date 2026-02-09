@@ -6,9 +6,10 @@
 // @author       You
 // @match        https://m.youtube.com/watch?v=*
 // @match        https://www.bilibili.com/*
+// @match        *//ok.ru/videoembed/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @grant        none
-// @updateURL    https://github.com/tos087871/public/raw/main/resume_yt_test.js
+// @updateURL    https://github.com/tos087871/public/raw/main/resume.js
 // ==/UserScript==
 
 (function() {
