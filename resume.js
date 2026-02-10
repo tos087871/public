@@ -20,6 +20,19 @@
   `
 <div class="bpx-player-video-wrap"><video crossorigin="anonymous" preload="auto" src="blob:https://www.bilibili.com/e6ddf136-6439-447b-99ef-16871b83a22e"></video></div>
 `
+if (location.hostname==='8tsu.net') {
+  waitForKeyElements("iframe, frame", function(frame) {
+  frame.addEventListener('load', function(e) {
+    // give main() the `document` from the frame each time it loads
+    main(e.event.contentDocument);
+  });
+});
+} else {
+  main(document);
+}
+function main(document) {
+  
+
   console.log('start')
   /*
   const mode = 'test';
@@ -64,5 +77,5 @@
     localStorage.setItem(key, video.currentTime); //sec
     console.log(video.currentTime)
   }, 5 * 1000);
-  
+}
 })();
