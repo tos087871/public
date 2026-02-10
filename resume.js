@@ -9,7 +9,7 @@
 // @match        *//ok.ru/videoembed/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @grant        none
-// @updateURL    https://github.com/tos087871/public/raw/main/resume.js
+// @updateURL    https://raw.githubusercontent.com/tos087871/public/refs/heads/main/resume.js
 // ==/UserScript==
 
 (function() {
