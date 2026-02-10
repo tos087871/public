@@ -6,7 +6,8 @@
 // @author       You
 // @match        https://m.youtube.com/watch?v=*
 // @match        https://www.bilibili.com/*
-// @match        *//ok.ru/videoembed/*
+// @match        https://ok.ru/videoembed/*
+// @match        https://8tsu.net/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @grant        none
 // @updateURL    https://raw.githubusercontent.com/tos087871/public/refs/heads/main/resume.js
