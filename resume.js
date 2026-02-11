@@ -26,11 +26,15 @@
         // give main() the `document` from the frame each time it loads
         if (!e.event.contentDocument.querySelector('video')) {
           console.log('video not exist')
+          let loop=0;
           const id = setInterval(() => {
             if (e.event.contentDocument.querySelector('video')) {
               clearInterval(id);
               main(e.event.contentDocument)
             }else{
+              if (++loop>100) {
+                clearInterval(id)
+              }
               console.log('loop: not exist')
             }
           }, 1000);
