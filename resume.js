@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube Resum
 // @namespace    http://tampermonkey.net/
-// @version      0.1.24
+// @version      0.1.25
 // @description  try to take over the world!
 // @author       You
 // @match        https://m.youtube.com/watch?v=*
@@ -20,6 +20,7 @@
 <div class="bpx-player-video-wrap"><video crossorigin="anonymous" preload="auto" src="blob:https://www.bilibili.com/e6ddf136-6439-447b-99ef-16871b83a22e"></video></div>
 `
 
+  ///*
   if (location.hostname === '8tsu.net') {
     //waitForKeyElements("iframe, frame", function(frame) {
       document.querySelector('iframe').addEventListener('load', function(e) {
@@ -44,6 +45,9 @@
   } else {
     main(document);
   }
+  /*/
+  main();
+  //*/
   
   function main(document) {
     console.log('start')
@@ -80,7 +84,7 @@
         let loop = 0;
         if (video) {
           clearInterval(id)
-          main(video)
+          start(video)
         } else {
           if (++loop > 100) {
             clearInterval(id)
@@ -88,7 +92,7 @@
           console.log('loop: not exist')
         }
       }, 1000);
-      return;
+      //return;
     }else {
       start(video);
     }
