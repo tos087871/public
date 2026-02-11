@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube Resum
 // @namespace    http://tampermonkey.net/
-// @version      0.1.23
+// @version      0.1.24
 // @description  try to take over the world!
 // @author       You
 // @match        https://m.youtube.com/watch?v=*
@@ -21,18 +21,18 @@
 <div class="bpx-player-video-wrap"><video crossorigin="anonymous" preload="auto" src="blob:https://www.bilibili.com/e6ddf136-6439-447b-99ef-16871b83a22e"></video></div>
 `
   if (location.hostname === '8tsu.net') {
-    waitForKeyElements("iframe, frame", function(frame) {
-      frame.addEventListener('load', function(e) {
+    //waitForKeyElements("iframe, frame", function(frame) {
+      document.querySelector('iframe').addEventListener('load', function(e) {
         // give main() the `document` from the frame each time it loads
         if (!e.event.contentDocument.querySelector('video')) {
           console.log('video not exist')
-          let loop=0;
+          let loop = 0;
           const id = setInterval(() => {
             if (e.event.contentDocument.querySelector('video')) {
               clearInterval(id);
               main(e.event.contentDocument)
-            }else{
-              if (++loop>100) {
+            } else {
+              if (++loop > 100) {
                 clearInterval(id)
               }
               console.log('loop: not exist')
@@ -41,14 +41,12 @@
         }
         else main(e.event.contentDocument);
       });
-    });
+    //});
   } else {
     main(document);
   }
   
   function main(document) {
-    
-    
     console.log('start')
     /*
     const mode = 'test';
@@ -81,16 +79,21 @@
     const video = document.querySelector(getSelector());
     if (!video) {
       console.log('video not exist')
-      const id =setInterval(()=>{
-     const video = document.querySelector(getSelector());
-       if (video) {
-         clearInterval(id)
-         main(video)
-       }
-      },1000);
+      const id = setInterval(() => {
+        const video = document.querySelector(getSelector());
+        let loop = 0;
+        if (video) {
+          clearInterval(id)
+          main(video)
+        } else {
+          if (++loop > 100) {
+            clearInterval(id)
+          }
+          console.log('loop: not exist')
+        }
+      }, 1000);
       return;
     }
-    
     else start(video);
     
     function start(video) {
