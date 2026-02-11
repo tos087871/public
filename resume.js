@@ -16,14 +16,13 @@
 (function() {
   'use strict';
   
-  // Your code here...
   `
 <div class="bpx-player-video-wrap"><video crossorigin="anonymous" preload="auto" src="blob:https://www.bilibili.com/e6ddf136-6439-447b-99ef-16871b83a22e"></video></div>
 `
+
   if (location.hostname === '8tsu.net') {
     //waitForKeyElements("iframe, frame", function(frame) {
       document.querySelector('iframe').addEventListener('load', function(e) {
-        // give main() the `document` from the frame each time it loads
         if (!e.event.contentDocument.querySelector('video')) {
           console.log('video not exist')
           let loop = 0;
@@ -53,6 +52,7 @@
     /*/
     const mode = 'release';
     // */
+    
     function getSelector() {
       //url.hostname
       if (mode === 'test') {
@@ -65,16 +65,12 @@
         case 'www.bilibili.com':
           return '.bpx-player-video-wrap video';
         case 'ok.ru':
-        case '8tsu.net':
+        //case '8tsu.net':
           return 'video';
         default:
           return '';
       }
     }
-    
-    //window.addEventListener('load',
-    
-    
     
     const video = document.querySelector(getSelector());
     if (!video) {
@@ -93,11 +89,11 @@
         }
       }, 1000);
       return;
+    }else {
+      start(video);
     }
-    else start(video);
     
     function start(video) {
-      
       console.log('video exists')
       const key = 'video resume' + location.url;
       
@@ -113,8 +109,8 @@
       }, 5 * 1000);
     }
     
-    function waitVideoElm() {
+    /*function waitVideoElm() {
       
-    }
+    }*/
   }
 })();
