@@ -24,7 +24,16 @@ if (location.hostname==='8tsu.net') {
   waitForKeyElements("iframe, frame", function(frame) {
   frame.addEventListener('load', function(e) {
     // give main() the `document` from the frame each time it loads
-    main(e.event.contentDocument);
+    if (!e.event.contentDocument.querySelector('video')) {
+      const id = setInterval(()=>{
+        if (e.event.contentDocument.querySelector('video')) {
+          clearInterval(id);
+          main(e.event.contentDocument)
+        }
+      }
+      , 1000)
+    }
+    else main(e.event.contentDocument);
   });
 });
 } else {
@@ -77,5 +86,9 @@ function main(document) {
     localStorage.setItem(key, video.currentTime); //sec
     console.log(video.currentTime)
   }, 5 * 1000);
+  
+  function waitVideoElm() {
+    
+  }
 }
 })();
