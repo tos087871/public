@@ -30,6 +30,8 @@
             if (e.event.contentDocument.querySelector('video')) {
               clearInterval(id);
               main(e.event.contentDocument)
+            }else{
+              console.log('loop: not exist')
             }
           }, 1000);
         }
