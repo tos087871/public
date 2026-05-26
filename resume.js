@@ -6,7 +6,6 @@
 // @author       You
 // @match        https://m.youtube.com/watch?v=*
 // @match        https://www.bilibili.com/*
-// @match        https://ok.ru/videoembed/*
 // @match        https://8tsu.net/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @grant        none
@@ -17,6 +16,9 @@
   'use strict';
   
   `
+  https://stackoverflow.com/questions/37616818/apply-a-greasemonkey-tampermonkey-userscript-to-an-iframe
+  https://www.tampermonkey.net/faq.php#Q204
+  
 <div class="bpx-player-video-wrap"><video crossorigin="anonymous" preload="auto" src="blob:https://www.bilibili.com/e6ddf136-6439-447b-99ef-16871b83a22e"></video></div>
 `
 
@@ -46,7 +48,7 @@
     main(document);
   }
   /*/
-  main();
+  main(document);
   //*/
   
   function main(document) {
