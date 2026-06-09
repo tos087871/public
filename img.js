@@ -41,8 +41,26 @@
     const imgListContainer = document.querySelector('#img-list-container');
     document.querySelectorAll('img').forEach(item => {
       const newImg = item.cloneNode();
-      newImg.width=200;
-      imgListContainer.appendChild(newImg);
+      addSingleListImage(imgListContainer, newImg);
+      /*newImg.width=200;
+      imgListContainer.appendChild(newImg);*/
     });
+    addCssBg(imgListContainer);
+  }
+  function addCssBg(imgListContainer) {
+    document.querySelectorAll('*[background-image]').forEach(item=>{
+      const css = window.getComputedStyle(item).backgroundImage;
+      const matchList = css.match(/(?:url\s*\(\s+)([^\s]*)(?:\s*\))/g);
+      console.log(matchList[0])
+      const newImage = new Image();
+      newImage.src=matchList[0];
+      newImage.onload=()=>{
+        addSingleListImage(imgListContainer, newImage);
+      };
+    });
+  }
+  function addSingleListImage(imgListContainer,newImg) {
+    newImg.width=200;
+      imgListContainer.appendChild(newImg);
   }
 })();
