@@ -15,6 +15,7 @@
   window.addEventListener("load", () => {
     addDisplayButton();
   });
+  
   function addDisplayButton() {
     document.querySelector('body').insertAdjacentHTML('beforeend',
       `
@@ -23,10 +24,11 @@
         </div>
       `
     );
-    document.querySelector('#img-list-button').onclick=item=>{
+    document.querySelector('#img-list-button').onclick = item => {
       addListContainer();
     };
   }
+  
   function addListContainer() {
     document.querySelector('body').insertAdjacentHTML('beforeend',
       `
@@ -35,7 +37,7 @@
         </div>
       `
     );
-    document.querySelector('#img-list-container-close').onclick=()=>{
+    document.querySelector('#img-list-container-close').onclick = () => {
       imgListContainer.remove();
     };
     const imgListContainer = document.querySelector('#img-list-container');
@@ -47,20 +49,30 @@
     });
     addCssBg(imgListContainer);
   }
+  
   function addCssBg(imgListContainer) {
-    document.querySelectorAll('*[background-image]').forEach(item=>{
+    console.log('bg')
+    document.querySelectorAll('*').forEach(item => {
+      //console.log(item)
       const css = window.getComputedStyle(item).backgroundImage;
-      const matchList = css.match(/(?:url\s*\(\s+)([^\s]*)(?:\s*\))/g);
-      console.log(matchList[0])
+      console.log(css)
+      const matchList = css.match(/(?:url\s*\(\s*")([^\s]*)(?:"\s*\))/);
+      if (!matchList) {
+        return;
+      } else {
+        
+      }
+      console.log(matchList[1])
       const newImage = new Image();
-      newImage.src=matchList[0];
-      newImage.onload=()=>{
+      newImage.src = matchList[1];
+      newImage.onload = () => {
         addSingleListImage(imgListContainer, newImage);
       };
     });
   }
-  function addSingleListImage(imgListContainer,newImg) {
-    newImg.width=200;
-      imgListContainer.appendChild(newImg);
+  
+  function addSingleListImage(imgListContainer, newImg) {
+    newImg.width = 200;
+    imgListContainer.appendChild(newImg);
   }
 })();
